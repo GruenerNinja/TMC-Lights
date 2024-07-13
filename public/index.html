@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MIDI Velocity Editor</title>
+    <link rel="stylesheet" href="css/launchpad-mk3-pro.css">
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr@1.8.2/dist/pickr.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr@1.8.2/dist/themes/nano.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tonejs/midi@1.1.0/build/Midi.min.js"></script>
+</head>
+<body>
+<h1>MIDI Velocity Editor</h1>
+<input type="file" id="midi-file-input">
+<div id="velocity-list"></div>
+<div id="color-picker-container">
+    <div id="color-picker"></div>
+    <div id="selected-color">V: 0</div>
+</div>
+<button id="replace-velocity-button">Replace Velocities</button>
+<button id="preview-velocity-button">Preview</button>
+<button id="download-velocity-button">Download</button>
+
+<!-- Modal for MIDI preview -->
+<div id="midi-preview-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Select MIDI Device and Port</h2>
+        <label for="midi-device-select">MIDI Device:</label>
+        <select id="midi-device-select"></select>
+        <button id="preview-play-button">Play</button>
+    </div>
+</div>
+
+<script src="scripts/velocityColors.js"></script>
+<script src="scripts/colorPicker.js"></script>
+<script src="scripts/midiProcessor.js"></script>
+</body>
+</html>
+5
