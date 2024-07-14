@@ -97,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const newColorDiv = document.createElement('div');
             newColorDiv.className = 'new-color';
             newColorDiv.style.backgroundColor = rgbToCssColor(color); // Initialize with original color
+            newColorDiv.style.boxShadow = ` -1px 0px 8px 8px ${rgbToCssColor(color)}`; // Initialize box-shadow with original color and direction
             newColorDiv.textContent = `New V: ${velocity}`; // Initialize with original velocity
             item.appendChild(newColorDiv);
 
@@ -112,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update new color and text
         const newColor = velocityColors.find(v => v.velocity === newVelocity).color;
         newColorDiv.style.backgroundColor = rgbToCssColor(newColor);
+        newColorDiv.style.boxShadow = ` -1px 0px 8px 8px ${rgbToCssColor(newColor)}`;
         newColorDiv.textContent = `New V: ${newVelocity}`;
     }
 
@@ -135,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Update the new color display
                 const newColorDiv = input.nextSibling;
                 newColorDiv.style.backgroundColor = rgbToCssColor(newColor);
+                newColorDiv.style.boxShadow = ` -1px 0px 8px 8px ${rgbToCssColor(newColor)}`;
                 newColorDiv.textContent = `New V: ${newVelocity}`;
 
                 // Update MIDI data

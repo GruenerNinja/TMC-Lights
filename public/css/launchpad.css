@@ -1,0 +1,46 @@
+/* styles.css */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #222;
+}
+
+.launchpad-wrapper {
+    display: flex;
+}
+
+.launchpad-container {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 5px;
+}
+
+.side-buttons {
+    display: grid;
+    grid-template-rows: repeat(8, 1fr);
+    grid-gap: 5px;
+    margin-left: 10px;
+}
+
+.launchpad-button, .side-button {
+    width: 50px;
+    height: 50px;
+    background-color: #555;
+    border: 2px solid #333;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.launchpad-button.active, .side-button.active {
+    background-color: #777;
+    box-shadow: 0px 0px 20px 5px rgba(255,255,255,0.5);
+}

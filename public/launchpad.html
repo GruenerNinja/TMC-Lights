@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Launchpad</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tonejs/midi@2.0.27/build/Tone.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tonejs/midi@2.0.27/build/Midi.min.js"></script>
+</head>
+<body>
+<div id="controls">
+    <input type="file" id="midi-file-input" accept=".mid,.midi">
+    <button id="play-button">Play</button>
+</div>
+<div id="launchpad"></div>
+<script src="launchpad.js"></script>
+</body>
+</html>
