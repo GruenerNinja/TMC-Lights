@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let selectedMidiOutput;
     let midiOutputs = [];
     let midiData;
+    const targetBPM = 128;
+    const defaultBPM = 120;
+    const timeScaleFactor = defaultBPM / targetBPM;
 
     document.getElementById('midi-file-input').addEventListener('change', handleFileSelect);
     document.getElementById('replace-velocity-button').addEventListener('click', replaceVelocities);
@@ -164,10 +167,13 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Playing MIDI on device:', selectedMidiOutput.name);
         midiData.tracks.forEach(track => {
             track.notes.forEach(note => {
-                selectedMidiOutput.send([0x90, note.midi, note.velocity * 127]);
-                setTimeout(() => {
-                    selectedMidiOutput.send([0x80, note.midi, 0]);
-                }, note.duration * 1000);
+                const noteOnMessage = [0x90, note.midi, note.velocity * 127];
+                const noteOffMessage = [0x80, note.midi, 0];
+                const noteOnTime = note.time * timeScaleFactor * 1000;
+                const noteOffTime = noteOnTime + (note.duration * timeScaleFactor * 1000);
+
+                selectedMidiOutput.send(noteOnMessage, window.performance.now() + noteOnTime);
+                selectedMidiOutput.send(noteOffMessage, window.performance.now() + noteOffTime);
             });
         });
     }

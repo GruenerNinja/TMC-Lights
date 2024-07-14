@@ -1,8 +1,3 @@
-body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-}
-
 .velocity-item {
     display: flex;
     align-items: center;
@@ -10,7 +5,7 @@ body {
 }
 
 .velocity-item > div {
-    width: 50px;
+    width: 150px;
     height: 50px;
     display: flex;
     justify-content: center;
@@ -18,6 +13,8 @@ body {
     margin-right: 10px;
     font-weight: bold;
     color: white;
+    border-radius: 5px;
+    border: white 1px solid;
 }
 
 .velocity-input {
@@ -77,12 +74,12 @@ body {
     background-color: #fefefe;
     margin: 5% auto;
     padding: 20px;
-    border: 1px solid #888;
+    border: 1px solid #ffffff;
     width: 80%;
 }
 
 .close {
-    color: #aaa;
+    color: #ffffff;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -224,3 +221,10 @@ body {
 .velocity-125 { background-color: rgb(15, 12, 0); }
 .velocity-126 { background-color: rgb(44, 23, 0); }
 .velocity-127 { background-color: rgb(18, 5, 0); }
+
+
+
+
+
+
+

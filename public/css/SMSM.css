@@ -1,0 +1,150 @@
+.SMSM_menu {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.SMSM_toggle {
+    position: absolute;
+    top: 55%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    height: 60px;
+    width: 60px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 5;
+    transition: transform 0.5s ease;
+}
+
+
+.SMSM_menu.active .SMSM_toggle {
+    transform: translate(-50%, -50%) rotate(360deg);
+}
+
+.body {
+    font-size: 16px; /* Set a base font size */
+    background-color: #333;
+    color: white;
+}
+
+.SMSM_icons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.SMSM_menu.active .SMSM_icons {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.SMSM_icons li {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s ease;
+}
+.SMSM_menu.active .SMSM_icons li:nth-child(1) {
+    transform: translate(-120px, 0);
+}
+.SMSM_menu.active .SMSM_icons li:nth-child(2) {
+    transform: translate(-85px, -85px);
+}
+.SMSM_menu.active .SMSM_icons li:nth-child(3) {
+    transform: translate(0, -120px);
+}
+.SMSM_menu.active .SMSM_icons li:nth-child(4) {
+    transform: translate(85px, -85px);
+}
+.SMSM_menu.active .SMSM_icons li:nth-child(5) {
+    transform: translate(120px, 0);
+}
+.SMSM_menu.active .SMSM_icons li:nth-child(6) {
+    transform: translate(85px, 85px);
+}
+.SMSM_menu.active .SMSM_icons li:nth-child(7) {
+    transform: translate(0, 120px);
+}
+.SMSM_menu.active .SMSM_icons li:nth-child(8) {
+    transform: translate(-85px, 85px);
+}
+.SMSM_icons li a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 60px;
+    width: 60px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 5;
+    text-decoration: none;
+}
+.SMSM_icons li a:hover {
+    animation: rainbow 10s infinite linear;
+    background-color: #515151;
+    box-shadow: 13px -8px 20px 8px rgb(119, 255, 0), 1px 1px 20px 8px rgb(0 255 244), -8px 6px 20px 8px #0101ff;
+}
+@keyframes rainbow {
+    0% { color: #FF0000; }      /* Red */
+    4% { color: #FF4500; }      /* OrangeRed */
+    8% { color: #FF8C00; }      /* DarkOrange */
+    12% { color: #FFD700; }     /* Gold */
+    16% { color: #FFFF00; }     /* Yellow */
+    20% { color: #ADFF2F; }     /* GreenYellow */
+    24% { color: #00FF00; }     /* Lime */
+    28% { color: #00FFFF; }     /* Aqua */
+    32% { color: #00CED1; }     /* DarkTurquoise (brighter cyan) */
+    36% { color: #1E90FF; }     /* DodgerBlue */
+    40% { color: #8A2BE2; }     /* BlueViolet */
+    44% { color: #EE82EE; }     /* Violet */
+    48% { color: #FF1493; }     /* DeepPink */
+    52% { color: #FF00FF; }     /* Fuchsia */
+    56% { color: #DA70D6; }     /* Orchid */
+    60% { color: #9370DB; }     /* MediumPurple */
+    64% { color: #4B0082; }     /* Indigo */
+    68% { color: #483D8B; }     /* DarkSlateBlue */
+    72% { color: #00BFFF; }     /* DeepSkyBlue */
+    76% { color: #00FFFF; }     /* Cyan */
+    80% { color: #40E0D0; }     /* Turquoise */
+    84% { color: #7FFFD4; }     /* Aquamarine */
+    88% { color: #ADFF2F; }     /* GreenYellow */
+    92% { color: #FFD700; }     /* Gold */
+    96% { color: #FF8C00; }     /* DarkOrange */
+    100% { color: #FF4500; }    /* OrangeRed */
+}
+.smsm-wrapper {
+    position: fixed;
+    bottom: 25px; /* Adjust the distance from the bottom */
+    right: 25px; /* Adjust the distance from the right */
+    z-index: 9999; /* Ensure it's above other elements */
+}
