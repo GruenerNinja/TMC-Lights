@@ -3,15 +3,43 @@ body{
 }
 
 #launchpad {
-    display: grid;
-    gap: 5px;
+    display: flex;
+    flex-direction: row;
     width: 450px;
     margin: 0 auto;
     background-color: black;
 }
-.launchpad-row {
+.middle-buttons{
     display: flex;
+    flex-direction: column;
+    align-content: space-between;
 }
+.side-buttons-top{
+    display: flex;
+    flex-direction: row;
+}
+.main-buttons{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.main-buttons-top-left{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.main-buttons-top-right{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.main-buttons-bottom-left{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.main-buttons-bottom-right{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+
 
 .launchpad-button, .side-button {
     width: 40px;

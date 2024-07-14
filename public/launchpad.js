@@ -6,25 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const topRight = [99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84];
     const sideButtons = [104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119];
 
-    // Create the grid
-    const launchpad = document.getElementById('launchpad');
-    if (!launchpad) {
-        console.error('Launchpad element not found');
-        return;
-    }
-    launchpad.innerHTML = '';
-
-    const grid = [
-        ...topLeft.slice(12, 16), ...topRight.slice(12, 16),
-        ...topLeft.slice(8, 12), ...topRight.slice(8, 12),
-        ...topLeft.slice(4, 8), ...topRight.slice(4, 8),
-        ...topLeft.slice(0, 4), ...topRight.slice(0, 4),
-        ...bottomLeft.slice(12, 16), ...bottomRight.slice(12, 16),
-        ...bottomLeft.slice(8, 12), ...bottomRight.slice(8, 12),
-        ...bottomLeft.slice(4, 8), ...bottomRight.slice(4, 8),
-        ...bottomLeft.slice(0, 4), ...bottomRight.slice(0, 4),
-    ];
-
+    // Function to create a button element
     const createButton = (note) => {
         const button = document.createElement('div');
         button.className = 'launchpad-button';
@@ -33,31 +15,77 @@ document.addEventListener('DOMContentLoaded', () => {
         return button;
     };
 
-    // Create the 8x8 grid with side buttons
-    for (let row = 0; row < 10; row++) {
-        const rowDiv = document.createElement('div');
-        rowDiv.className = 'launchpad-row';
+    // Function to append buttons to a container
+    const appendButtons = (container, notes) => {
+        notes.forEach(note => {
+            const button = createButton(note);
+            container.appendChild(button);
+        });
+    };
 
-        if (row > 0 && row < 9) {
-            const sideButton = createButton(sideButtons[row - 1]);
-            sideButton.classList.add('side-button');
-            rowDiv.appendChild(sideButton);
-        }
-
-        for (let col = 0; col < 8; col++) {
-            if (row === 0 || row === 9) {
-                const sideButton = createButton(sideButtons[col]);
-                sideButton.classList.add('side-button');
-                rowDiv.appendChild(sideButton);
-            } else {
-                const note = grid[(row - 1) * 8 + col];
-                rowDiv.appendChild(createButton(note));
-            }
-        }
-
-        launchpad.appendChild(rowDiv);
+    // Create the grid structure
+    const launchpad = document.getElementById('launchpad');
+    if (!launchpad) {
+        console.error('Launchpad element not found');
+        return;
     }
 
+    // Clear any existing content
+    launchpad.innerHTML = '';
+
+    // Create containers
+    const sideButtonsLeftContainer = document.createElement('div');
+    sideButtonsLeftContainer.className = 'side-buttons-left';
+    appendButtons(sideButtonsLeftContainer, sideButtons.slice(0, 8));
+
+    const sideButtonsTopContainer = document.createElement('div');
+    sideButtonsTopContainer.className = 'side-buttons-top';
+    appendButtons(sideButtonsTopContainer, sideButtons.slice(8, 16));
+
+    const mainButtonsContainer = document.createElement('div');
+    mainButtonsContainer.className = 'main-buttons';
+
+    const mainButtonsTopLeftContainer = document.createElement('div');
+    mainButtonsTopLeftContainer.className = 'main-buttons-top-left';
+    appendButtons(mainButtonsTopLeftContainer, topLeft);
+    mainButtonsContainer.appendChild(mainButtonsTopLeftContainer);
+
+    const mainButtonsTopRightContainer = document.createElement('div');
+    mainButtonsTopRightContainer.className = 'main-buttons-top-right';
+    appendButtons(mainButtonsTopRightContainer, topRight);
+    mainButtonsContainer.appendChild(mainButtonsTopRightContainer);
+
+    const mainButtonsBottomLeftContainer = document.createElement('div');
+    mainButtonsBottomLeftContainer.className = 'main-buttons-bottom-left';
+    appendButtons(mainButtonsBottomLeftContainer, bottomLeft);
+    mainButtonsContainer.appendChild(mainButtonsBottomLeftContainer);
+
+    const mainButtonsBottomRightContainer = document.createElement('div');
+    mainButtonsBottomRightContainer.className = 'main-buttons-bottom-right';
+    appendButtons(mainButtonsBottomRightContainer, bottomRight);
+    mainButtonsContainer.appendChild(mainButtonsBottomRightContainer);
+
+    const sideButtonsBottomContainer = document.createElement('div');
+    sideButtonsBottomContainer.className = 'side-buttons-bottom';
+    appendButtons(sideButtonsBottomContainer, sideButtons.slice(16, 24));
+
+    const sideButtonsRightContainer = document.createElement('div');
+    sideButtonsRightContainer.className = 'side-buttons-right';
+    appendButtons(sideButtonsRightContainer, sideButtons.slice(24, 32));
+
+    // Append containers to launchpad
+    launchpad.appendChild(sideButtonsLeftContainer);
+
+    const middleButtonsContainer = document.createElement('div');
+    middleButtonsContainer.className = 'middle-buttons';
+    middleButtonsContainer.appendChild(sideButtonsTopContainer);
+    middleButtonsContainer.appendChild(mainButtonsContainer);
+    middleButtonsContainer.appendChild(sideButtonsBottomContainer);
+    launchpad.appendChild(middleButtonsContainer);
+
+    launchpad.appendChild(sideButtonsRightContainer);
+
+    // MIDI file handling and playback
     let midiData;
     const playButton = document.getElementById('play-button');
 
