@@ -5,16 +5,29 @@ body{
 #launchpad {
     display: flex;
     flex-direction: row;
-    width: 450px;
+    width: 440px;
     margin: 0 auto;
     background-color: black;
 }
+.side-buttons-left{
+    display: flex;
+    flex-direction: column;
+}
+.side-buttons-right{
+    display: flex;
+    flex-direction: column;
+}
+
 .middle-buttons{
     display: flex;
     flex-direction: column;
     align-content: space-between;
 }
 .side-buttons-top{
+    display: flex;
+    flex-direction: row;
+}
+.side-buttons-bottom{
     display: flex;
     flex-direction: row;
 }
@@ -38,7 +51,6 @@ body{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
-
 
 
 .launchpad-button, .side-button {

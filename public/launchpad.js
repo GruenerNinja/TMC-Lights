@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Constants for note ranges
-    const bottomLeft = [51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36];
-    const bottomRight = [83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68];
-    const topLeft = [67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52];
-    const topRight = [99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84];
-    const sideButtons = [104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119];
+    const bottomLeft = [48, 49, 50, 51, 44, 45, 46, 47, 40, 41, 42, 43, 36, 37, 38, 39];
+    const bottomRight = [80, 81, 82, 83, 76, 77, 78, 79, 72, 73, 74, 75, 68, 69, 70, 71];
+    const topLeft = [64, 65, 66, 67, 60, 61, 62, 63, 56, 57, 58, 59, 52, 53, 54, 55];
+    const topRight = [96, 97, 98, 99, 92, 93, 94, 95, 88, 89, 90, 91, 84, 85, 86, 87];
+    const sideButtons = [104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129];
 
     // Function to create a button element
     const createButton = (note) => {
@@ -36,11 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Create containers
     const sideButtonsLeftContainer = document.createElement('div');
     sideButtonsLeftContainer.className = 'side-buttons-left';
-    appendButtons(sideButtonsLeftContainer, sideButtons.slice(0, 8));
+    appendButtons(sideButtonsLeftContainer, sideButtons.slice(0, 10));
 
     const sideButtonsTopContainer = document.createElement('div');
     sideButtonsTopContainer.className = 'side-buttons-top';
-    appendButtons(sideButtonsTopContainer, sideButtons.slice(8, 16));
+    appendButtons(sideButtonsTopContainer, sideButtons.slice(10, 18));
 
     const mainButtonsContainer = document.createElement('div');
     mainButtonsContainer.className = 'main-buttons';
@@ -67,11 +67,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const sideButtonsBottomContainer = document.createElement('div');
     sideButtonsBottomContainer.className = 'side-buttons-bottom';
-    appendButtons(sideButtonsBottomContainer, sideButtons.slice(16, 24));
+    appendButtons(sideButtonsBottomContainer, sideButtons.slice(18, 26));
 
     const sideButtonsRightContainer = document.createElement('div');
     sideButtonsRightContainer.className = 'side-buttons-right';
-    appendButtons(sideButtonsRightContainer, sideButtons.slice(24, 32));
+    appendButtons(sideButtonsRightContainer, sideButtons.slice(0, 10));
 
     // Append containers to launchpad
     launchpad.appendChild(sideButtonsLeftContainer);
