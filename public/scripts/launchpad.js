@@ -12,7 +12,19 @@ document.addEventListener('DOMContentLoaded', () => {
         button.className = 'launchpad-button';
         button.dataset.note = note;
         button.textContent = note; // Display the note number for reference
+
+        // Set background color based on velocity
+        const velocity = 100; // Replace with actual velocity value from MIDI if available
+        const color = getVelocityColor(velocity);
+        button.style.backgroundColor = rgbToCssColor(color);
+
         return button;
+    };
+
+    // Function to get color based on velocity
+    const getVelocityColor = (velocity) => {
+        const color = velocityColors.find(v => v.velocity === velocity);
+        return color ? color.color : [51, 51, 51]; // Default to white if no match found
     };
 
     // Function to append buttons to a container
@@ -124,7 +136,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     const button = document.querySelector(`.launchpad-button[data-note="${note.midi}"]`);
                     if (button) {
-                        button.classList.add('active');
+                        const velocity = Math.round(note.velocity * 127); // Convert MIDI velocity to 0-127 range
+                        const color = getVelocityColor(velocity);
+                        button.style.backgroundColor = rgbToCssColor(color);
                     }
                     console.log(`Note on: ${note.midi} at ${note.time}s`);
                 }, noteOnTime - startTime);
@@ -132,11 +146,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     const button = document.querySelector(`.launchpad-button[data-note="${note.midi}"]`);
                     if (button) {
-                        button.classList.remove('active');
+                        // Reset to default color or inactive state
+                        button.style.backgroundColor = ''; // Set to default state or background
                     }
                     console.log(`Note off: ${note.midi} at ${note.time + note.duration}s`);
                 }, noteOffTime - startTime);
             });
         });
+    }
+
+    // Utility function to convert RGB array to CSS color format
+    function rgbToCssColor(rgbArray) {
+        return `rgb(${rgbArray[0]}, ${rgbArray[1]}, ${rgbArray[2]})`;
     }
 });
