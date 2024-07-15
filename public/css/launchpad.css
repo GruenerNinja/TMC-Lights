@@ -1,46 +1,91 @@
-/* styles.css */
-body {
+body{
+    background-color: #3c3c3c;
+}
+.lauchpad-sec{
+    margin: 20px;
     display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+.controls{
+    background-color: black;
+    border-radius: 30px;
+    width:420px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #222;
 }
-
-.launchpad-wrapper {
+#launchpad {
+    margin: 10px;
     display: flex;
+    flex-direction: row;
+    width: 440px;
+    background-color: black;
+}
+.side-buttons-left{
+    display: flex;
+    flex-direction: column;
+}
+.side-buttons-right{
+    display: flex;
+    flex-direction: column;
 }
 
-.launchpad-container {
+.middle-buttons{
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+.side-buttons-top{
+    display: flex;
+    flex-direction: row;
+}
+.side-buttons-bottom{
+    display: flex;
+    flex-direction: row;
+}
+.main-buttons{
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-gap: 5px;
+    grid-template-columns: repeat(2, 1fr);
+}
+.main-buttons-top-left{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.main-buttons-top-right{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.main-buttons-bottom-left{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.main-buttons-bottom-right{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 }
 
-.side-buttons {
-    display: grid;
-    grid-template-rows: repeat(8, 1fr);
-    grid-gap: 5px;
-    margin-left: 10px;
-}
 
 .launchpad-button, .side-button {
-    width: 50px;
-    height: 50px;
-    background-color: #555;
-    border: 2px solid #333;
-    border-radius: 10px;
+    width: 40px;
+    height: 40px;
+    margin: 2px;
+    background-color: #333;
     display: flex;
-    justify-content: center;
     align-items: center;
-    color: #fff;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0);
     font-size: 12px;
-    cursor: pointer;
-    transition: background-color 0.2s, box-shadow 0.2s;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
-.launchpad-button.active, .side-button.active {
-    background-color: #777;
-    box-shadow: 0px 0px 20px 5px rgba(255,255,255,0.5);
+.side-button {
+    background-color: #555;
+}
+.active{
+    background: #ff0000;
+    color: rgba(255, 0, 0, 0);
 }

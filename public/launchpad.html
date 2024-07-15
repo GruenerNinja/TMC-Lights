@@ -1,32 +1,136 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virtual Launchpad</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>TheModCraft</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1" >
+    <meta property="og:description" content="TheModCraft Network website">
+    <meta property="og:type" content="website">
+    <link rel="shortcut icon" href="images/TMC_Logo.webp">
+    <link rel="stylesheet" type="text/css" href="css/style_index.css" />
+    <link rel="stylesheet" type="text/css" href="css/style_navbar.css" />
+    <link rel="stylesheet" type="text/css" href="css/SMSM.css" />
+    <link rel="stylesheet" type="text/css" href="css/style_footer.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/5a4c0976d6.js" crossorigin="anonymous"></script>
+    <script type="text/babel" data-presets="react" src="scripts/draggable.js"></script>
+    <script src="https://player.twitch.tv/js/embed/v1.js"></script>
+    <script src="https://unpkg.com/@babel/standalone"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="scripts/sidebar.js"></script>
+    <link rel="stylesheet" href="css/launchpad.css">
+    <script src="css/launchpad.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tonejs/midi@2.0.27/build/Tone.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tonejs/midi@2.0.27/build/Midi.min.js"></script>
 </head>
 <body>
-<div id="controls">
-    <input type="file" id="midi-file-input" accept=".mid,.midi">
-    <button id="play-button">Play</button>
-</div>
-<div id="launchpad" class="launchpad">
-    <div class="side-buttons-left"></div>
-    <div class="middle-buttons">
-        <div class="side-buttons-top"></div>
-        <div class="main-buttons">
-            <div class="main-buttons-top-left"></div>
-            <div class="main-buttons-top-right"></div>
-            <div class="main-buttons-bottom-left"></div>
-            <div class="main-buttons-bottom-right"></div>
+<div class="smsm-wrapper  draggable"  id="draggableElement">
+    <div class="SMSM_menu">
+        <div class="SMSM_toggle" onclick="toggleMenu()">
+            <i class="fa-solid fa-share-nodes"></i>
         </div>
-        <div class="side-buttons-bottom"></div>
+        <ul class="SMSM_icons">
+            <li style="--i:3;" class="SMSM_bubble"><a href="#"><i class="fab fa-youtube"></i></a></li>
+            <li style="--i:3;" class="SMSM_bubble"><a href="#"><i class="fab fa-facebook"></i></a></li>
+            <li style="--i:3;" class="SMSM_bubble"><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li style="--i:3;" class="SMSM_bubble"><a href="#"><i class="fab fa-github"></i></a></li>
+            <li style="--i:3;" class="SMSM_bubble"><a href="#"><i class="fa-brands fa-apple"></i></a></li>
+            <li style="--i:3;" class="SMSM_bubble"><a href="#"><i class="fa-brands fa-discord"></i></a></li>
+            <li style="--i:3;" class="SMSM_bubble"><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+            <li style="--i:3;" class="SMSM_bubble"><a href="#"><i class="fa-brands fa-stack-overflow"></i></a></li>
+        </ul>
     </div>
-    <div class="side-buttons-right"></div>
 </div>
-<script src="launchpad.js"></script>
+<script>
+    function toggleMenu() {
+        var menu = document.querySelector('.SMSM_menu');
+        menu.classList.toggle('active');
+    }
+</script>
+<section class="Header" >
+    <div class="header_bar">
+        <nav class="ac-globalnav">
+            <div class="ac-gn-content">
+                <ul class="ac-gn-list">
+                    <li class="ac-gn-item ac-gn-item-menu ac-gn-Sidebar">
+                        <a href="#" class="openSidebarLink ac-gn-link ac-gn-link-Sidebar">☰</a>
+                    </li>
+                    <li class="ac-gn-item ac-gn-item-menu ac-gn-Home">
+                        <a class="ac-gn-link ac-gn-link-home" href="index.html">Home</a>
+                    </li>
+                    <li class="ac-gn-item ac-gn-item-menu ac-gn-Music">
+                        <a class="ac-gn-link ac-gn-link-music" href="https://djsimx.com" target="_blank">Music</a>
+                    </li>
+                    <li class="ac-gn-item ac-gn-item-menu ac-gn-Gaming">
+                        <a class="ac-gn-link ac-gn-link-gaming" href="gaming.html">Gaming</a>
+                    </li>
+                    <li class="ac-gn-item ac-gn-item-menu ac-gn-drone">
+                        <a class="ac-gn-link ac-gn-link-drone" href="drone.html">Drone</a>
+                    </li>
+                    <li class="ac-gn-item ac-gn-item-menu ac-gn-programming">
+                        <a class="ac-gn-link ac-gn-link-programming" href="programming.html">Programming</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="dropdown">
+            <button class="dropbtn">☰
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <ul class="ac-dn-list">
+                    <li class="ac-dn-item ac-dn-item-menu ac-dn-Home">
+                        <a class="ac-dn-link ac-dn-link-home" href="index.html">Home</a>
+                    </li>
+                    <li class="ac-dn-item ac-dn-item-menu ac-dn-Music">
+                        <a class="ac-dn-link ac-dn-link-music" href="djsimx.com">Music</a>
+                    </li>
+                    <li class="ac-dn-item ac-dn-item-menu ac-dn-Gaming">
+                        <a class="ac-dn-link ac-dn-link-gaming" href="gaming.html">Gaming</a>
+                    </li>
+                    <li class="ac-dn-item ac-dn-item-menu ac-dn-drone">
+                        <a class="ac-dn-link ac-dn-link-drone" href="drone.html">Drone</a>
+                    </li>
+                    <li class="ac-dn-item ac-dn-item-menu ac-dn-programming">
+                        <a class="ac-dn-link ac-dn-link-programming" href="programming.html">Programming</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="search_frame">
+            <div class="Filter search_spacing">
+                <i class="fa fa-filter w3-xlarge"></i>
+            </div>
+            <div class="Search_icon search_spacing ">
+                <i class="fa fa-search w3-xlarge"></i>
+            </div>
+            <div class="Search search_spacing">
+                <input class="Search_input" placeholder="Search..." autocomplete="on" aria-label="Search field">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="lauchpad-sec">
+    <div id="controls" class="controls">
+        <input type="file" id="midi-file-input" accept=".mid,.midi">
+        <button id="play-button">Play</button>
+    </div>
+    <div id="launchpad" class="launchpad">
+        <div class="side-buttons-left"></div>
+        <div class="middle-buttons">
+            <div class="side-buttons-top"></div>
+            <div class="main-buttons">
+                <div class="main-buttons-top-left"></div>
+                <div class="main-buttons-top-right"></div>
+                <div class="main-buttons-bottom-left"></div>
+                <div class="main-buttons-bottom-right"></div>
+            </div>
+            <div class="side-buttons-bottom"></div>
+        </div>
+        <div class="side-buttons-right"></div>
+    </div>
+</section>
 </body>
 </html>
