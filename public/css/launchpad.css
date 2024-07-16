@@ -120,7 +120,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgba(255, 255, 255, 0);
+    color: rgba(255, 0, 0, 0);
     font-size: 12px;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
@@ -129,7 +129,10 @@ body{
 .side-button {
     background-color: #555;
 }
-.active{
-    background: #ff0000;
-    color: rgba(255, 0, 0, 0);
+[data-note="27"] {
+    background-image: url('https://cdn11.bigcommerce.com/s-itgb7ssiy1/product_images/novation-favicon.png?t=1686318824');
+    background-size: contain; /* Adjusts the image size to fit the element */
+    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-position: center; /* Centers the background image */
+    border: #313030 1px solid;
 }

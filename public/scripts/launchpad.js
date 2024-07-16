@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const bottomRight = [80, 81, 82, 83, 76, 77, 78, 79, 72, 73, 74, 75, 68, 69, 70, 71];
     const topLeft = [64, 65, 66, 67, 60, 61, 62, 63, 56, 57, 58, 59, 52, 53, 54, 55];
     const topRight = [96, 97, 98, 99, 92, 93, 94, 95, 88, 89, 90, 91, 84, 85, 86, 87];
-    const sideButtons = [104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129];
+    const sideButtons = [26, 108, 109, 110, 111, 112, 113, 114, 115, 115, 28, 29, 30, 31, 32, 33, 34, 35, 27, 100, 101, 102, 103, 104, 105, 106, 107, 107, 116, 117, 118, 119, 120, 121, 122, 123];
+
 
     let midiAccess = null;
     let midiInput = null;
@@ -152,11 +153,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const sideButtonsBottomContainer = document.createElement('div');
     sideButtonsBottomContainer.className = 'side-buttons-bottom';
-    appendButtons(sideButtonsBottomContainer, sideButtons.slice(18, 26));
+    appendButtons(sideButtonsBottomContainer, sideButtons.slice(28, 36));
 
     const sideButtonsRightContainer = document.createElement('div');
     sideButtonsRightContainer.className = 'side-buttons-right';
-    appendButtons(sideButtonsRightContainer, sideButtons.slice(0, 10));
+    appendButtons(sideButtonsRightContainer, sideButtons.slice(18, 28));
 
     // Append containers to launchpad
     launchpad.appendChild(sideButtonsLeftContainer);
