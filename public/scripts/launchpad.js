@@ -13,13 +13,54 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Request MIDI access
     try {
         midiAccess = await navigator.requestMIDIAccess();
+        // Populate MIDI input devices select options
+        const inputSelect = document.getElementById('midi-input-select');
         midiAccess.inputs.forEach(input => {
-            if (!midiInput) midiInput = input;
+            const option = document.createElement('option');
+            option.value = input.id;
+            option.textContent = input.name;
+            inputSelect.appendChild(option);
         });
+
+        // Listen for MIDI input device selection
+        inputSelect.addEventListener('change', (event) => {
+            const selectedInputId = event.target.value;
+            midiInput = midiAccess.inputs.get(selectedInputId);
+            if (midiInput) {
+                midiInput.onmidimessage = handleMIDIMessage;
+            } else {
+                console.error('Selected MIDI input device not found');
+            }
+        });
+
+        // Automatically select the first input device initially
+        const firstInput = midiAccess.inputs.values().next().value;
+        if (firstInput) {
+            midiInput = firstInput;
+            midiInput.onmidimessage = handleMIDIMessage;
+        }
+
+        // Populate MIDI output devices select options
+        const outputSelect = document.getElementById('midi-output-select');
         midiAccess.outputs.forEach(output => {
-            if (!midiOutput) midiOutput = output;
+            const option = document.createElement('option');
+            option.value = output.id;
+            option.textContent = output.name;
+            outputSelect.appendChild(option);
         });
-        if (midiInput) midiInput.onmidimessage = handleMIDIMessage;
+
+        // Listen for MIDI output device selection
+        outputSelect.addEventListener('change', (event) => {
+            const selectedOutputId = event.target.value;
+            midiOutput = midiAccess.outputs.get(selectedOutputId);
+        });
+
+        // Automatically select the first output device initially
+        const firstOutput = midiAccess.outputs.values().next().value;
+        if (firstOutput) {
+            midiOutput = firstOutput;
+        }
+
     } catch (error) {
         console.error('Failed to access MIDI devices:', error);
     }

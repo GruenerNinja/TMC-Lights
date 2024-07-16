@@ -10,12 +10,56 @@ body{
 .controls{
     background-color: black;
     border-radius: 30px;
-    width:420px;
-    height: 50px;
+    width: 560px;
+    min-height: 50px;
+    max-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.input{
+    background-color: black;
+    color: white;
+    margin: 5px 0;
+    padding: 5px;
+    width: 200px;
+}
+.options-button {
+    background-color: #333333;
+    color: #b7ff00;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.selection-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: max-height 0.3s ease;
+    overflow: hidden;
+}
+.selection-menu.hidden {
+    max-height: 0;
+    visibility: hidden;
+}
+.selection-menu.visible {
+    max-height: 200px; /* Adjust based on content */
+    visibility: visible;
+}
+.in-web{
+    margin-bottom: 10px;
+    width: 560px;
+    height: 70px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+.selectio-meneu{
+    display: flex;
+    flex-direction: column;
 }
 #launchpad {
     margin: 10px;
